@@ -1,0 +1,7 @@
+{
+    "LocalDestination": "%USERNAME%\\RURAL IT SOLUTIONS\\DRONE - Documents\\R2F\\PilotUploads",
+    "LogFile": "%USERNAME%\\RURAL IT SOLUTIONS\\DRONE - Documents\\R2F\\CopyLog.txt",
+    "LastBunNumberFile": "%USERNAME%\\RURAL IT SOLUTIONS\\DRONE - Documents\\R2F\\LastBunNumber.txt",
+    "LastRunDateFile": "%USERNAME%\\RURAL IT SOLUTIONS\\DRONE - Documents\\R2F\\LastRunDate.txt",
+    "BunSiteMapFile": "%USERNAME%\\RURAL IT SOLUTIONS\\DRONE - Documents\\R2F\\BunSiteMap.csv"
+  }
