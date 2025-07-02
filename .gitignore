@@ -1,17 +1,19 @@
-
 # Ignore sensitive configuration files
 Settings.json
 BunSiteMap.csv
 CopyLog.txt
 LastBunNumber.txt
 LastRunDate.txt
-
-# Ignore temporary files
+CopyLog-RU-01.txt
+LastBunNumber-RU-01.txt
+LastRunDate-RU-01.txt
+# Ignore temporary or duplicate files
 *.bak
 *.tmp
-
+CopySDToOneDrive-RU-01.ps1
+TestLog.txt
+TestWMI.ps1
 # Ignore Visual Studio Code settings
 .vscode/
-
 # Ignore PowerShell history
 ConsoleHost_history.txt
