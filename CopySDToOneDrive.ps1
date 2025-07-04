@@ -405,7 +405,7 @@ function Process-360Smart {
     param($DcimPath, $DriveLetter, $DataTypeChoice)
     try {
         Write-Log "Processing 360 SD card with option: $DataTypeChoice"
-        $shelterFolderName = 'CDT SHELTER (SCOPE 1 "&" 2 ONLY)'
+        $shelterFolderName = "CDT SHELTER (SCOPE 1 & 2 ONLY)"
 
         if ($DataTypeChoice -eq "3") {
             Write-Log "User selected 360 DATA Dump, using basic logic"
@@ -591,7 +591,12 @@ function Process-360Smart {
 
         # Create folder structure only if not merging
         if (-not ($mergeInsta -or $mergeShelter)) {
-            New-Item -ItemType Directory -Path $rawFolder, $vtSpheresFolder, $dtTowerFolder, $cdtInstaFolder, $cdtShelterFolder, $iphoneCivilFolder -Force | Out-Null
+            New-Item -ItemType Directory -Path $rawFolder -Force | Out-Null
+            New-Item -ItemType Directory -Path $vtSpheresFolder -Force | Out-Null
+            New-Item -ItemType Directory -Path $dtTowerFolder -Force | Out-Null
+            New-Item -ItemType Directory -Path $cdtInstaFolder -Force | Out-Null
+            New-Item -ItemType Directory -Path $cdtShelterFolder -Force | Out-Null
+            New-Item -ItemType Directory -Path $iphoneCivilFolder -Force | Out-Null
             Write-Log "Created folder structure: $siteFolder"
         }
 
@@ -812,7 +817,7 @@ function Process-SDCard {
         return
     }
     Write-Log "Processing SD card at $sdDrive"
-    $shelterFolderName = 'CDT SHELTER (SCOPE 1 "&" 2 ONLY)'
+    $shelterFolderName = "CDT SHELTER (SCOPE 1 & 2 ONLY)"
 
     $lastBunNumber = if (Test-Path $LastBunNumberFile) { Get-Content $LastBunNumberFile } else { "" }
     $dcmiFolder = Get-ChildItem -Path "$sdDrive\" -Directory -ErrorAction SilentlyContinue | Where-Object { $_.Name -ieq "DCIM" }
@@ -947,7 +952,13 @@ function Process-SDCard {
             $cdtInstaFolder = Join-Path $siteFolder "CDT INSTA VIDEO"
             $cdtShelterFolder = Join-Path $siteFolder $shelterFolderName
             $iphoneCivilFolder = Join-Path $siteFolder "IPHONE CIVIL"
-            New-Item -ItemType Directory -Path $rawFolder, $vtSpheresFolder, $dtTowerFolder, $cdtInstaFolder, $cdtShelterFolder, $iphoneCivilFolder -Force | Out-Null
+            New-Item -ItemType Directory -Path $rawFolder -Force | Out-Null
+            New-Item -ItemType Directory -Path $vtSpheresFolder -Force | Out-Null
+            New-Item -ItemType Directory -Path $dtTowerFolder -Force | Out-Null
+            New-Item -ItemType Directory -Path $cdtInstaFolder -Force | Out-Null
+            New-Item -ItemType Directory -Path $cdtShelterFolder -Force | Out-Null
+            New-Item -ItemType Directory -Path $iphoneCivilFolder -Force | Out-Null
+            Write-Log "Created folder structure: $siteFolder"
 
             Write-Log "Copying DCIM folder from Drone SD card to $rawFolder"
             $files = Get-ChildItem -Path $dcmiPath -Recurse -File
